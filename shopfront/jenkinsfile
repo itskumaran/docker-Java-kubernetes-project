@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/itskumaran/docker-Java-kubernetes-project.git'
+            }
+        }
+        stage('Navigate to cd shopfront directory') {
+            steps {
+                dir('cd shopfront') {
+                    // Run Maven clean install command
+                    sh 'mvn clean install'
+                }
+            }
+        }
+    }
+}
